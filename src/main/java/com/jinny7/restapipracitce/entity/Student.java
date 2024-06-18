@@ -12,6 +12,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @NoArgsConstructor
@@ -25,7 +28,7 @@ public class Student {
     /**
      * 2. 학번 (e.g. 202451111)
      */
-    @Column(name = "studentNumber", nullable = false)
+    @Column(name = "studentNumber", nullable = false, unique = true)
     private String studentNumber;
     /**
      * 3. 이름
@@ -37,6 +40,9 @@ public class Student {
      */
     @Column(name = "email", nullable = false)
     private String email;
+
+//    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+//    private List<Exam> exams = new ArrayList<>();
 
     public Student(Long id, String studentNumber, String name, String email){
         this.id = id;

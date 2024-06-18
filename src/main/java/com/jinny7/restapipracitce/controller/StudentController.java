@@ -4,6 +4,8 @@ import ch.qos.logback.core.util.StringUtil;
 import com.jinny7.restapipracitce.db.StudentMap;
 import com.jinny7.restapipracitce.dto.StudentRequestDto;
 import com.jinny7.restapipracitce.entity.Student;
+import com.jinny7.restapipracitce.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
@@ -20,6 +22,9 @@ public class StudentController {
     public StudentController(StudentMap studentMap) {
         this.studentMap = studentMap;
     }
+
+    @Autowired
+    private StudentService studentService;
 
     // 1. 학생 등록
     // 호출할 때 POST로 /sudents하고 RequestBody에 JSON형태로 쓰면 호출됨
@@ -38,7 +43,9 @@ public class StudentController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getStudentById(@PathVariable Long id){
         Student student = this.studentMap.getById(id);
-        return ResponseEntity.status(HttpStatus.OK).body(student);
+        return studentService.getStudent(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
 
