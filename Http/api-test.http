@@ -1,0 +1,54 @@
+### 테스트용 파일 : 학생등록1
+POST http://localhost:8080/students
+Content-Type: application/json
+
+{
+  "id" : 1,
+  "studentNumber" : "20241111",
+  "name" : "지니",
+  "email" : "jinny@naver.com"
+}
+
+### 테스트용 파일 : 학생등록2
+POST http://localhost:8080/students
+Content-Type: application/json
+
+{
+  "id" : 2,
+  "studentNumber" : "20242222",
+  "name" : "기니",
+  "email" : "ginny@naver.com"
+}
+
+### 테스트용 파일 : 학생등록3
+POST http://localhost:8080/students
+Content-Type: application/json
+
+{
+  "id" : 3,
+  "studentNumber" : "20243333",
+  "name" : "니니",
+  "email" : "ninny@naver.com"
+}
+
+### 테스트용 파일 : 학생등록4
+POST http://localhost:8080/students
+Content-Type: application/json
+
+{
+  "id" : 4,
+  "studentNumber" : "20244444",
+  "name" : "디니",
+  "email" : "dinny@naver.com"
+}
+
+
+### 학생 조회 테스트
+GET http://localhost:8080/students/1
+
+### 학생 전체 조회 테스트
+GET http://localhost:8080/students
+
+### 학번에 해당하는 학생 조회 테스트
+GET http://localhost:8080/students?number=20243333
+//number가 파라미터 =뒤에가 파라미터값
