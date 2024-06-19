@@ -18,6 +18,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name = "students")
 public class Student {
     /**
      * 1. ID (엔티티 고유번호)
@@ -28,7 +29,7 @@ public class Student {
     /**
      * 2. 학번 (e.g. 202451111)
      */
-    @Column(name = "studentNumber", nullable = false, unique = true)
+    @Column(name = "student_number", nullable = false, unique = true)
     private String studentNumber;
     /**
      * 3. 이름
