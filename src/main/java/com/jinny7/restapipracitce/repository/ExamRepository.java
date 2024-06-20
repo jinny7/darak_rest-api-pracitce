@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface ExamRepository extends JpaRepository<Exam, Long> {
     List<Exam> findByStudentIdAndSubjectType(Long studentId, SubjectType subjectType);
+
+    List<Exam> findByScoreBetweenOrderByScoreDesc(int minScore, int maxScore);
 }
